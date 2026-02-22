@@ -1,18 +1,23 @@
 # Make a calculator that can be basic operations like addition, subtraction, multiplication, and divider
 
-a = int(input("Enter the first number: "))
-b = int(input("Enter the second number: "))
+a = int(input("Enter first number: "))
+b = int(input("Enter second number: "))
 
-operation = input("Enter the operation symbol: ")
-if operation == "+":
-    print("The result of addition is: ", a + b)
-elif operation == "-":
-    print("The result of subtraction is: ", a - b)
-elif operation == "*":
-    print("The result of multiplication is: ", a * b)
-elif operation == "/":
-    if b == 0:
-        print("Error: Division by zero is not allowed.")
-    else:
-        print("The result of division is: ", a / b)
-else:    print("Invalid operation number. Please select a valid operation.")
+print("Please select")
+print("+ for addition.")
+print("- for substraction ")
+print("* for multiplication.")
+print("/ for division")
+calc = (input("Enter the operation you want to perform: "))
+
+
+if( calc == "+"):
+    print("Addition of a and b is: ", a + b)
+elif( calc == "-"):
+    print("Substraction of a and b is: ", a - b)
+elif( calc == "*"):
+    print("Multiplication of a and b is: ", a * b)
+elif( calc == "/"):
+    print("Division of a and b is: ", a / b)
+else:
+    print("Please enter a valid operation.")
