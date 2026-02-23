@@ -4,8 +4,6 @@ class Solution:
     def removeDuplicates(self, nums):
         if not nums:
             return 0
-        
-
         k = 0
         for i in range(0, len(nums)):
             if nums[i] != nums[k]:
