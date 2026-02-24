@@ -7,5 +7,3 @@ for i in range(0, len(arr)):
     a = len(arr[i])
     total = total + a
 print(total)
-
-    
