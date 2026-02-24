@@ -10,7 +10,7 @@ for i in range(len(lname) - 1, -1, -1):
 finalName = []
 j = len(lname)-1
 for i in range(len(fname)):
-    finalName.append(fname[i] + " " + reversedLname[i])
+    finalName.append(fname[i] + " " + lname[j])
 
 for i in range(len(finalName)):
     print(finalName[i])
