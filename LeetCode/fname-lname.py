@@ -8,6 +8,7 @@ for i in range(len(lname) - 1, -1, -1):
     reversedLname.append(lname[i])
 
 finalName = []
+j = len(lname)-1
 for i in range(len(fname)):
     finalName.append(fname[i] + " " + reversedLname[i])
 
