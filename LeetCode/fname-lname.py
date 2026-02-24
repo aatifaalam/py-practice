@@ -1,10 +1,15 @@
 fname = ["Aatif", "Taleev", "Wasif"]
 lname = ["Aalam", "Aalam2", "Aalam3"]
 
-lname.reverse()
+reversedLname = []
+
+# lname.reverse()
+for i in range(len(lname) - 1, -1, -1):
+    reversedLname.append(lname[i])
+
 finalName = []
 for i in range(len(fname)):
-    finalName.append(fname[i] + " " + lname[i])
+    finalName.append(fname[i] + " " + reversedLname[i])
 
 for i in range(len(finalName)):
     print(finalName[i])
