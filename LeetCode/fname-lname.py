@@ -1,6 +1,7 @@
 fname = ["Aatif", "Taleev", "Wasif"]
-lname = [" Aalam", " Aalam2", " Aalam3"]
+lname = ["Aalam", "Aalam2", "Aalam3"]
 
-
+finalName = []
 for i in range(0, len(fname)):
-    print(fname[i] + lname[i])
+    finalName.append(fname[i] + " " + lname[i])
+    print(finalName[i])
