@@ -10,7 +10,10 @@ def getFinalName():
         finalName.append(fname[i] + " " + lname[j])
         j -= 1
     return finalName
-finalName = getFinalName()
 
-for i in range(len(finalName)):
-    print(finalName[i])
+for i in range(len(getFinalName())):
+    print(getFinalName()[i])
+
+
+
+print(getFinalName())
