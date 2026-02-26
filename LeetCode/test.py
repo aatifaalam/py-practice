@@ -3,17 +3,14 @@ lname = ["Aalam", "Aalam2", "Aalam3"]
 
 j = len(lname)-1
 
+finalName = []
+j = len(lname)-1
+for i in range(len(fname)):
+    finalName.append(fname[i] + " " + lname[j])
+    j -= 1
+
 def getFinalName():
-    finalName = []
-    j = len(lname)-1
-    for i in range(len(fname)):
-        finalName.append(fname[i] + " " + lname[j])
-        j -= 1
     return finalName
 
 for i in range(len(getFinalName())):
     print(getFinalName()[i])
-
-
-
-print(getFinalName())
