@@ -1,8 +1,10 @@
-users = {}
-n = int(input("Enter numbers of users: "))
-for i in range(n):
-    name = input("Enter name: ")
-    id = int(input("Enter id: "))
-    users[name] = id
-
-print(users)
+nums = [1, 2, 3, 1]
+freq = set()
+def dup(nums):
+    for i in nums:
+        if i in freq:
+            return True
+        else:
+            freq.add(1)
+    return False        
+print(dup(nums))
