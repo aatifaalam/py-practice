@@ -1,42 +1,43 @@
 from fastapi import FastAPI
+from fastapi import HTTPException
+from pydantic import BaseModel
 
 app = FastAPI()
-@app.get("/")
-def home():
-    return {"meassage": "Hello, Aatif"}
-
-# users = {}
-# number_of_users = int(input("Enter numbers of users: "))
-# @app.get("/add-users")
-# def add_users(users):
-#     for i in range(number_of_users):
-#         name = input("Enter name: ")
-#         id = int(input("Enter id: "))
-#         users[name] = id 
-#         return {"message": "User Added!"}
 
 users = {}
-@app.get("/add_users")
-def add_users(name: str, age: int):
-    users[name] = age
-    return {"message": "User Added"}
-      
+class User(BaseModel):
+    name: str
+    age: int
 
-@app.get("/get_user")
-def get_users(users):
+@app.get("/")
+def home():
+    return "Welcome Aatif, FastAPI is running."
+
+@app.post("/add_user")
+def add_user(user: User):
+    users[user.name] = user.age
+    return {"message": "User added", "data": users}
+
+@app.get("/users")
+def get_users():
     return users
 
 @app.get("/user/{name}")
 def get_user(name: str):
-    if name in users:
-        return {name: users[name]}
-    return {"error": "User not found"}
+    if name not in users:
+        raise HTTPException(status_code=404, detail="User not found")
+    return {name: users[name]}
 
-@app.get("/update_user/{name}")
-def update_user(name: str, age: int):
-    users.update({name:age})
-    return {"meassage": "User Updated"}, users
+@app.put("/update_user/{name}")
+def update_user(name: str, user: User):
+    if name not in users:
+        raise HTTPException(status_code=404, detail="User not found")
+    users[name] = user.age
+    return {"message": "User updated", "data": users}
 
-@app.get("/home")
-def hello():
-    return {"message": "Hello, Aatif! Welcome to FastAPI"}
+@app.delete("/delete_user/{name}")
+def delete_user(name: str):
+    if name not in users:
+        raise HTTPException(status_code=404, detail="User not found")
+    del users[name]
+    return {"mesaage": "Deleted", "data": users}
