@@ -1,10 +1,22 @@
 from fastapi import FastAPI
 from fastapi import HTTPException
 from pydantic import BaseModel
+import json
+
+def load_users():
+    try:
+        with open("users.json", "r") as file:
+            return json.load(file)
+    except:
+        return {}
+
+def save_users(users):
+    with open("users.json", "w") as file:
+        json.dump(users, file)
 
 app = FastAPI()
+users = load_users()
 
-users = {}
 class User(BaseModel):
     name: str
     age: int
@@ -16,6 +28,7 @@ def home():
 @app.post("/add_user")
 def add_user(user: User):
     users[user.name] = user.age
+    save_users(users)
     return {"message": "User added", "data": users}
 
 @app.get("/users")
@@ -33,6 +46,7 @@ def update_user(name: str, user: User):
     if name not in users:
         raise HTTPException(status_code=404, detail="User not found")
     users[name] = user.age
+    save_users(users)
     return {"message": "User updated", "data": users}
 
 @app.delete("/delete_user/{name}")
