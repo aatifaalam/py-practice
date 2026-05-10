@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Path
 from fastapi import HTTPException
 from pydantic import BaseModel
 import json
@@ -35,7 +35,7 @@ def add_user(user: User):
 def get_users():
     return users
 
-@app.get("/user/{name}")
+@app.get("/user/{name}" )
 def get_user(name: str):
     if name not in users:
         raise HTTPException(status_code=404, detail="User not found")
