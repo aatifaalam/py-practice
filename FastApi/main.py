@@ -2,7 +2,8 @@ from fastapi import FastAPI
 import json
 from pydantic import BaseModel
 from fastapi import HTTPException
-
+#this is good as this file is controller
+#modify the code in a way that this controller should call a service class to fetch the user detail
 def load_users():
     try:
         with open("users.json", "r") as file:
