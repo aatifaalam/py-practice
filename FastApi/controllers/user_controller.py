@@ -46,3 +46,36 @@ def find_user(name: str):
         "hobby": hobby
     }
 
+@router.put("/update_user/{name}")
+def update_user(name: str, user: User):
+    hobby = get_user_by_name(name)
+
+    if hobby is None:
+        raise HTTPException(
+            status_code=404,
+            detail="User not found"
+        )
+
+    data = add_user(name, user.hobby)
+
+    return {
+        "message": "User Updated",
+        "data": data
+    }
+
+@router.delete("/delete_user/{name}")
+def delete_user(name: str):
+    hobby = get_user_by_name(name)
+
+    if hobby is None:
+        raise HTTPException(
+            status_code=404,
+            detail="User not found"
+        )
+
+    data = add_user(name, "")
+
+    return {
+        "message": "User Deleted",
+        "data": data
+    }
