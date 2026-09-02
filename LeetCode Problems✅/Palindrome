@@ -1,0 +1,15 @@
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        newX=str(x)
+
+        while len(newX) > 1:
+            if newX[0] != newX[len(newX)-1]:
+                return False
+            else:
+                newX = newX[1:len(newX)-1]
+        return True
+
+a = Solution()
+x = 121
+ans = a.isPalindrome(x)
+print(ans)

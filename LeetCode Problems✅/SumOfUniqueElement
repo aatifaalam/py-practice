@@ -1,0 +1,27 @@
+from typing import List
+
+class Solution(object):
+    def sumOfUnique(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        freq = {}
+        sum = 0
+        for i in range(len(nums)):
+            if nums[i] not in freq:
+                freq[nums[i]] = 1
+            else:
+                freq[nums[i]] += 1
+
+        for k ,v in freq.items():
+            if v == 1:
+                sum = sum + k
+        return sum
+
+
+
+a = Solution()
+nums = [1,2,3,2]
+ans = a.sumOfUnique(nums)
+print(ans)

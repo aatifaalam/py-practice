@@ -1,0 +1,32 @@
+from typing import List
+from math import inf
+class Solution:
+    def minimalKSum(self, nums: List[int], k: int) -> int:
+        
+        sum = 0
+        nums.append(0) 
+        nums.sort()
+
+        def findSum(start, end):
+            return ((end*(end+1)) - ((start*(start-1))))//2
+
+        for i, j in zip(nums, nums[1:]):
+            delta = j-i-1
+            delta = min(k, delta)
+            if delta<=0:
+                continue
+            
+            sum+=findSum(i+1, i+delta)
+            k-=delta
+            if k==0:
+                break
+        if k>0:
+            sum+=findSum(nums[-1]+1, nums[-1]+k)
+            
+        return sum       
+    
+a = Solution()
+nums = [1,4,25,10,25]
+k = 2
+ans = a.minimalKSum(nums, k)
+print(ans)

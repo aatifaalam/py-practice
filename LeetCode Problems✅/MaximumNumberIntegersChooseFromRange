@@ -1,0 +1,20 @@
+from typing import List
+class Solution:
+    def maxCount(self, banned: List[int], n: int, maxSum: int) -> int:
+
+        bannedSet = set(banned)
+        count = 0
+        currentSum = 0
+
+        for i in range(1, n + 1):
+            if i not in bannedSet and currentSum + i <= maxSum:
+                count = count + 1
+                currentSum = currentSum
+        return count
+
+a = Solution()
+banned = [1,6,5]
+n = 5
+maxSum = 6
+ans = a.maxCount(banned, n, maxSum)
+print(ans)

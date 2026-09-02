@@ -1,4 +1,4 @@
-list1 = []
+list1 = [7,8]
 list2 = [3]
 final_list = []
 

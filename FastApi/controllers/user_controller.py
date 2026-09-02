@@ -63,7 +63,7 @@ def update_user(name: str, user: User):
         "data": data
     }
 
-@router.delete("/delete_user/{name}")
+@router.delete("/delete_user/{name}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_user(name: str):
     hobby = get_user_by_name(name)
 

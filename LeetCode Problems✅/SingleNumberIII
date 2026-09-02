@@ -1,0 +1,24 @@
+class Solution(object):
+    def singleNumberIII(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        freq = {}
+        for i in range(len(nums)):
+            if nums[i] not in freq:
+                freq[nums[i]] = 1
+            else:
+                freq[nums[i]] += 1
+
+        arr = []        
+        for k in freq:
+            if freq[k] == 1:
+                arr.append(k)
+
+        return arr        
+
+a = Solution()
+nums = [1,2,1,3,2,5]
+ans = a.singleNumberIII(nums)
+print(ans)

@@ -1,0 +1,22 @@
+from math import inf
+from typing import List
+class Solution:
+    def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
+        bool_nums = [False] * (len(nums) + 1)
+
+        for i in range(len(nums)):
+            if nums[i] <= len(nums):
+                bool_nums[nums[i]] = True
+
+        ans = []
+        for i in range(1, len(bool_nums)):
+            if bool_nums[i] == False:
+                ans.append(i)
+        return
+
+
+
+a = Solution()
+nums = [4,3,2,7,8,2,3,1]
+ans = a.findDisappearedNumbers(nums)
+print(ans)

@@ -1,0 +1,32 @@
+class Solution(object):
+    def singleNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        # freq = {}
+        # for i in range(len(nums)):
+        #     if nums[i] not in freq:
+        #         freq[nums[i]] = 1
+        #     else:
+        #         freq[nums[i]] += 1
+        # for key in freq:
+        #     if freq[key] == 1:
+        #         return key   
+
+        uniqueSet = set(nums)
+        listSet = list(uniqueSet)
+        totalSum1 = 0
+        for i in range(len(uniqueSet)):
+            totalSum1 = totalSum1 + listSet[i] * 2
+
+        totalSum2 = 0
+        for i in range(len(nums)):
+            totalSum2 = totalSum2 + nums[i]
+
+        return totalSum1 - totalSum2
+
+a = Solution()
+nums = [2,2,4]
+ans = a.singleNumber(nums)
+print(ans)

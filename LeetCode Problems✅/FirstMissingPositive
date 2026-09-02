@@ -1,0 +1,19 @@
+class Solution(object):
+    def firstMissingPositive(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        curr = 0
+        temp = 0
+        for i in range(len(nums)):
+            curr = curr + nums[i]
+
+        for i in range(len(nums)):
+            if nums[i] == nums[i]:
+                temp = nums[i]
+        return temp        
+a = Solution()
+nums = [3,4,-1,1]
+ans = a.firstMissingPositive(nums)
+print(ans)

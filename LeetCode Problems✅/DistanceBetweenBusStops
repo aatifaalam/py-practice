@@ -1,0 +1,22 @@
+class Solution(object):
+
+    def distanceBetweenBusStops(self, distance, start, destination):
+        if start > destination:
+            start, destination = destination, start
+
+        f = 0
+        for i in range(start, destination):
+            f = f + distance[i]
+
+        b = 0
+        for i in range(destination, start + len(distance)):
+            b = b + distance[i % len(distance)]
+
+        return min(f, b)
+    
+a = Solution()
+distance = [1,2,3,4]
+start = 0
+destination = 3
+ans = a.distanceBetweenBusStops(distance, start, destination)
+print(ans)

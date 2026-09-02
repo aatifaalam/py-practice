@@ -1,0 +1,22 @@
+from typing import List
+
+class Solution:
+    def sumOfUnique(self, nums: List[int]) -> int:
+        unique = []
+        map = {}
+        for i in range(len(nums)):
+            if nums[i] not in map:
+                map[nums[i]] = 1
+            else:
+                map[nums[i]] += 1
+
+        ans = 0
+        for k, v in map.items():
+            if v == 1:
+                ans += k
+        
+        return ans
+a = Solution()
+nums = [1,2,3,2]
+ans = a.sumOfUnique(nums)
+print(ans)
