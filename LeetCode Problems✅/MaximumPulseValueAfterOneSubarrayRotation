@@ -1,0 +1,53 @@
+class Solution(object):
+    def maxValue(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        n = len(nums)
+        if n == 0:
+            return 0
+        if n == 1:
+            return nums[0]
+
+        # u[i] = (-1)^i * nums[i]
+        u = [nums[i] if i % 2 == 0 else -nums[i] for i in range(n)]
+        base = sum(u)
+
+        pref = [0] * (n + 1)
+        for i in range(n):
+            pref[i + 1] = pref[i] + u[i]
+
+        INF = float('inf')
+        suffix_min = [[INF] * (n + 2) for _ in range(2)]
+        for i in range(n, -1, -1):
+            suffix_min[0][i] = min(suffix_min[0][i + 1], pref[i] if i % 2 == 0 else INF)
+            suffix_min[1][i] = min(suffix_min[1][i + 1], pref[i] if i % 2 == 1 else INF)
+
+        ans = base
+        for l in range(n):
+            # rotate [l..r] with r-l even: total change = -2 * sum(u[l+1:r+1])
+            p = (l + 1) % 2
+            start = l + 2
+            if start <= n:
+                min_pref = suffix_min[p][start]
+                if min_pref != INF:
+                    ans = max(ans, base + 2 * (pref[l + 1] - min_pref))
+
+            # rotate [l..r] with r-l odd: total change = -2 * sum(u[l:r+1])
+            p = l % 2
+            start = l + 2
+            if start <= n:
+                min_pref = suffix_min[p][start]
+                if min_pref != INF:
+                    ans = max(ans, base + 2 * (pref[l] - min_pref))
+
+        return ans
+
+
+# Example usage
+if __name__ == "__main__":
+    s = Solution()
+    print(s.maxValue([6, 4, 3]))
+    print(s.maxValue([1, 2, 3, 4]))
+    print(s.maxValue([3, 2, 1]))

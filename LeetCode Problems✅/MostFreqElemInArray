@@ -1,0 +1,25 @@
+class Solution(object):
+    def mostFrequentEven(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        freq = {}
+        for num in nums:
+            if num % 2 == 0:
+                if num not in freq:
+                    freq[num] = 1
+                else:
+                    freq[num] += 1
+        if not freq:
+            return -1
+        max_freq = max(freq.values())
+        
+        for num in sorted(freq.keys()):
+            if freq[num] == max_freq:
+                return num
+
+a = Solution()
+nums = [0,1,2,2,4,4,1]
+ans = a.mostFrequentEven(nums)
+print(ans)

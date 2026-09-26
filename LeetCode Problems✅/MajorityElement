@@ -1,0 +1,18 @@
+class Solution(object):
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        counts = 0
+        candidate = None
+        for num in nums:
+            if counts == 0:
+                candidate = num
+            counts += (1 if num == candidate else -1)
+        return candidate
+
+a = Solution()
+nums = [3,3,4,4]
+ans = a.majorityElement(nums)
+print(ans)

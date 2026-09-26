@@ -1,0 +1,20 @@
+class Solution(object):
+    def largestUniqueNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+
+        # uniqueNumber = []
+        # for num in nums:
+        #     if nums.count(num) == 1:
+        #         uniqueNumber.append(num)
+        # if len(uniqueNumber) == 0:
+        #     return -1
+        # return max(uniqueNumber)
+
+
+a = Solution()
+nums = [10, 11, 10, 10]
+ans = a.largestUniqueNumber(nums)
+print(ans)  

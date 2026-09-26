@@ -4,14 +4,14 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        nums.sort()
+        freq = {}
         for i in range(len(nums)):
-            if nums[i]==nums[i+1]:
-                return False
+            if nums[i] not in freq:
+                freq[nums[i]] = 1
             else:
-                return True
-
+                freq[nums[i]] += 1
+        return any(v > 1 for v in freq.values())
 a = Solution()
-nums = [1,2,3]
+nums = [2,14,18,22]
 ans = a.containsDuplicate(nums)
 print(ans)

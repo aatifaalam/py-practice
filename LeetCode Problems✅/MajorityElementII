@@ -1,0 +1,22 @@
+class Solution(object):
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        maj = {}
+        for num in nums:
+            if num not in maj:
+                maj[num] = 1
+            else:
+                maj[num] += 1
+        ans = []
+        for k, v in maj.items():
+            if v > len(nums) // 3:
+                ans.append(k)
+        return ans
+
+a = Solution()
+nums = [3,2,3]
+ans = a.majorityElement(nums)
+print(ans)

@@ -1,0 +1,32 @@
+class Solution(object):
+    def countIntersectingIntervals(self, intervals):
+        """
+        :type intervals: List[List[int]]
+        :rtype: int
+        """
+        valid = [iv for iv in intervals if iv[0] <= iv[1]]
+        n = len(valid)
+        if n < 2:
+            return 0
+
+        starts = sorted(iv[0] for iv in valid)
+        ends = sorted(iv[1] for iv in valid)
+
+        count = 0
+        active = 0
+        i = j = 0
+        while i < n:
+            if starts[i] <= ends[j]:
+                count += active
+                active += 1
+                i += 1
+            else:
+                active -= 1
+                j += 1
+
+        return count
+         
+a = Solution()
+intervals = [[1,2],[3,4],[5,6]]
+ans = a.countIntersectingIntervals(intervals)
+print(ans)

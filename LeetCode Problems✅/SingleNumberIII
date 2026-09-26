@@ -15,8 +15,7 @@ class Solution(object):
         for k in freq:
             if freq[k] == 1:
                 arr.append(k)
-
-        return arr        
+        return arr
 
 a = Solution()
 nums = [1,2,1,3,2,5]

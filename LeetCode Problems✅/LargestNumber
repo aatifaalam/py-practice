@@ -1,0 +1,16 @@
+class Solution(object):
+    def largestNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: str
+        """
+    
+        nums.sort(key=lambda x: str(x)*10, reverse=True)
+        if nums[0] == 0:
+            return '0'
+        return ''.join(map(str, nums))
+    
+a = Solution()
+nums = [3,30,34,5,9]
+ans = a.largestNumber(nums)
+print(ans)
